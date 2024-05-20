@@ -1,5 +1,7 @@
 import requests
 import config
+from io import BytesIO
+from PIL import Image
 
 geocode = input('Введите координаты или адрес объекта: ')
 # 46.034266 51.533562
@@ -33,10 +35,11 @@ if response:
     }
     res_image = requests.get('https://static-maps.yandex.ru/v1', params=static_params)
     if res_image:
-        i = bytes(res_image.content)
-        f = open('image.png', 'wb')
-        f.write(i)
-        f.close()
+        Image.open(BytesIO(res_image.content)).show()
+        # i = bytes(res_image.content)
+        # f = open('image.png', 'wb')
+        # f.write(i)
+        # f.close()
     else:
         print(f'{res_image.status_code} ({res_image.reason})')
 else:
