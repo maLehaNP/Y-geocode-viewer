@@ -26,7 +26,7 @@ if response:
           f"Координаты: {toponym_coordinates}\n",
           f"Город: {toponym_city}\n",
           f"Страна: {toponym_country}\n",
-          f"Почтовый индекс: {toponym_country}")
+          f"Почтовый индекс: {toponym_address}")
 
     static_params = {
         "apikey": config.static_apikey,
